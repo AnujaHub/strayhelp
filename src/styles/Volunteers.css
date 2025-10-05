@@ -1,0 +1,209 @@
+/* ================================================= */
+/* VOLUNTEERS PANEL (Minimalist & Pastel Theme) */
+/* ================================================= */
+
+:root {
+
+
+    /* STATUS COLORS (Defined to match a pastel/soft theme) */
+    --status-dispatched: #ff6961; /* Soft Red/Coral */
+    --status-available: #63d691; 
+    --status-resting: #f5e021; /* Soft Cream/Khaki for resting */
+    
+    /* UI ELEMENTS */
+    --card-border-color: #f1f3f5; /* VERY light gray border/separator */
+    --text-secondary: #7e8c9b; /* Muted gray-blue for secondary info */
+}
+
+/* -------------------- PANEL BASE -------------------- */
+
+.volunteers-panel {
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); 
+    max-height: 70vh;
+    overflow-y: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* -------------------- HEADER STYLES -------------------- */
+
+.volunteers-header {
+    margin-bottom: 20px; 
+    padding-bottom: 15px;
+    /* THIS IS THE ONLY BOTTOM BORDER KEPT */
+    border-bottom: 1px solid var(--card-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+.volunteers-panel h2 {
+    color: var(--text-dark); 
+    font-size: 1.4rem; 
+    font-weight: 700;
+    margin: 0;
+    min-width: 50%; 
+}
+
+.dispatch-summary {
+    display: flex;
+    gap: 15px; 
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex-wrap: wrap; 
+    margin-top: 0; 
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-orange);
+}
+
+/* --- Summary Chip Design --- */
+
+.dispatched-count, .available-count {
+    margin: 0; 
+    padding: 5px 10px;
+    border-radius: 20px; 
+    transition: all 0.2s;
+    white-space: nowrap; 
+}
+
+.dispatched-count {
+    color: #fff; 
+    background-color: var(--status-dispatched);
+}
+
+.available-count {
+    color: var(--text-dark); 
+    background-color: var(--status-available); 
+}
+
+/* -------------------- CARD LIST -------------------- */
+
+.volunteer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.volunteer-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    
+    /* FIX: Revert border to a simple, consistent box */
+    border: 1px solid var(--card-border-color); 
+    
+    /* REMOVED: border-left and border-bottom-color status styling */
+}
+
+/* Hover Effect - Subtle use of the primary orange */
+.volunteer-card:hover {
+    /* Subtle change in shadow for hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    background-color: #fffcf8; 
+    
+    /* Optional: Add a subtle status border on hover instead of permanent */
+    /* border-left: 5px solid var(--primary-orange); */ 
+}
+
+/* Status Color Coding (REMOVED - now only used on status text inside the card) */
+.volunteer-card.status-dispatched {
+    border: 1px solid var(--card-border-color); /* Reset the full border */
+}
+.volunteer-card.status-available {
+    border: 1px solid var(--card-border-color); /* Reset the full border */
+}
+.volunteer-card.status-resting {
+    border: 1px solid var(--card-border-color); /* Reset the full border */
+}
+
+
+.volunteer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.volunteer-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.volunteer-specialty {
+    font-size: 0.85rem;
+    color: var(--text-secondary); 
+    margin-top: 2px;
+}
+
+.volunteer-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+    padding-top: 10px;
+    border-top: 1px solid var(--card-border-color); 
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-label {
+    font-size: 0.7rem; 
+    color: var(--text-secondary); 
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.detail-value {
+    font-size: 0.95rem; 
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Specific styling for the Status text within the card */
+.status-text.detail-value {
+    font-weight: 700;
+}
+.status-dispatched .status-text { color: var(--status-dispatched); }
+.status-available .status-text { color: var(--status-available); }
+.status-resting .status-text { color: var(--status-resting); }
+
+/* -------------------- RESPONSIVE ADJUSTMENTS -------------------- */
+
+@media (max-width: 992px) {
+    .volunteer-details {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 576px) {
+    .volunteers-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .volunteers-panel h2 {
+        margin-bottom: 10px;
+    }
+    
+    .dispatch-summary {
+        margin-top: 5px; 
+        gap: 8px; 
+    }
+    
+    .volunteer-details {
+        /* Allow details to stack on small dashboard panels */
+        grid-template-columns: 1fr;
+    }
+}

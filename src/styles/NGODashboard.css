@@ -1,0 +1,102 @@
+.ngo-dashboard {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+background-color: var(--bg-light); 
+}
+
+.dashboard-content-wrapper {
+display: flex;
+flex-grow: 1;
+padding-top: 100px;
+}
+
+.dashboard-main {
+flex-grow: 1;
+margin-left: 0; 
+padding: 30px;
+overflow-y: auto; 
+overflow-x: hidden;
+}
+
+.dashboard-main h2 {
+color: var(--text-dark);
+margin-bottom: 25px;
+font-weight: 700;
+text-align: left; 
+padding-left: 10px;
+border-left: 4px solid var(--primary-orange);
+}
+
+.dashboard-panels {
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    min-height: 500px;
+    margin-bottom: 4rem;
+}
+
+.dashboard-panels > * {
+min-height: 400px; 
+background-color: #fff;
+border-radius: 12px;
+padding: 20px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+overflow-y: visible; 
+}
+
+.empty-panel-placeholder {
+display: flex;
+align-items: center;
+justify-content: center;
+color: #95a5a6;
+font-style: italic;
+border: 1px dashed #ecf0f1;
+min-height: 300px; 
+}
+
+.volunteer-panel-container {
+min-height: 300px; 
+}
+
+
+@media (max-width: 1200px) {
+.dashboard-panels {
+ flex-direction: column;
+ height: auto; 
+ /* Also ensure align-items is reset for the column layout */
+ align-items: stretch;
+}
+
+/* Panels take full width when stacked */
+.dashboard-panels > * {
+ flex: none; /* Reset flex to allow 100% width */
+ width: 100%;
+ margin-bottom: 20px;
+ overflow-y: visible;
+}
+
+.dashboard-main {
+ overflow-y: auto;
+}
+}
+
+@media (max-width: 900px) {
+.dashboard-main {
+ margin-left: 0;
+ /* padding: 20px 15px; */
+}
+
+.dashboard-main h2 {
+ text-align: left;
+ padding-left: 0;
+ border-left: none;
+ border-bottom: 2px solid var(--primary-orange);
+ padding-bottom: 5px;
+ margin-left: 10px;
+}
+
+.dashboard-content-wrapper {
+ width: 100%;
+}
+}
